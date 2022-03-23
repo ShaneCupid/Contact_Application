@@ -25,30 +25,44 @@ public class Main {
 			if (choice.equalsIgnoreCase("add")) {
 				System.out.println("");
 				choice = input.nextLine();
+				
 				if (choice.equalsIgnoreCase("person")) {
 					System.out.println("name");
 					name = input.nextLine();
+					
 					System.out.println("number");
 					phone = input.nextLine();
+					
+					 if (!Contact.isValid(phone)) {
+						 phone = "No Number";
+					 }
+					 
 					System.out.println("email");
 					email = input.nextLine();
+					
 					System.out.println("DOB");
 					dob = input.nextLine();
 					
+					contacts.add(new Person(name, phone, email, dob));
+					
 				} else if (choice.equalsIgnoreCase("organization")) {
+					
 					System.out.println("name");
 					name = input.nextLine();
+					
 					System.out.println("number");
 					phone = input.nextLine();
+					
+					if (!Contact.isValid(phone)) {
+						phone = "No Number";
+					}
+					
 					System.out.println("website");
 					website = input.nextLine();
+					
+					contacts.add(new Organization(name, phone, website));
 				}
 				
-				if (Contact.isValid(phone)) {
-					System.out.println("Valid Number");
-				} else {
-					System.out.println("[No Number]");
-				}
 				
 			} else if (choice.equalsIgnoreCase("list")) {
 				System.out.println();
@@ -62,23 +76,21 @@ public class Main {
 			} else if (choice.equalsIgnoreCase("delete")) { 
 				System.out.println();
 				System.out.println();
+				
 				int id = input.nextInt();	
 					if (map.containsKey(id)) {
 						map.remove(id);
 					}
+					
 			} else if (choice.equalsIgnoreCase("search")) {
 				System.out.println();
 			} 
 			
 		} while (choice.equalsIgnoreCase("exit"));
-			
+			System.out.println("Thanks for using our PhoneBook");
 		
 		input.close();
  	}
-	
-	static void add() {
-		
-	}
 	
 	static void delete() {
 		
