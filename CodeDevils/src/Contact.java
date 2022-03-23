@@ -7,22 +7,48 @@ public class Contact {
 	protected String phoneNumber;
 	protected final int contactId;
 	static int nextId = 1;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public int getContactId() {
+		return contactId;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
 	protected final LocalDateTime createdAt;
 
 	public Contact(String name, String phoneNumber) {
 		super();
 		this.name = name;
 		this.phoneNumber = phoneNumber;
-		this.contactId = nextId++;
+		this.contactId = nextId;
 		this.createdAt = LocalDateTime.now();
+		nextId++;
 	}
 
 	public static boolean isValid(String phone) {
 		Pattern p = Pattern.compile(
-	            "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$");
-		
+				"^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$");
+
 		Matcher m = p.matcher(phone);
-		
+
 		return (m.matches());
 	}
 
@@ -30,8 +56,8 @@ public class Contact {
 	public String toString() {
 		return "Contact [name = " + name + ", phoneNumber = " + phoneNumber + "]";
 	}
-	
+
 }
-	
-	
+
+
 
