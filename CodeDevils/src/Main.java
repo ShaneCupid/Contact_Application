@@ -4,13 +4,18 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		HashMap<Integer, String> map = new HashMap<>();
+		HashMap<Integer, Contact> map = new HashMap<>();
 		
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
 		String displayMenu = "[add, list, count, info, delete, search, exit]";
 		Scanner input = new Scanner(System.in);
 		String choice;
+		String name;
+		String phone = null;
+		String email;
+		String dob;
+		String website;
 		
 		
 		do {
@@ -18,11 +23,31 @@ public class Main {
 			choice = input.nextLine();
 			
 			if (choice.equalsIgnoreCase("add")) {
-				
+				System.out.println("");
+				choice = input.nextLine();
 				if (choice.equalsIgnoreCase("person")) {
+					System.out.println("name");
+					name = input.nextLine();
+					System.out.println("number");
+					phone = input.nextLine();
+					System.out.println("email");
+					email = input.nextLine();
+					System.out.println("DOB");
+					dob = input.nextLine();
 					
 				} else if (choice.equalsIgnoreCase("organization")) {
-					
+					System.out.println("name");
+					name = input.nextLine();
+					System.out.println("number");
+					phone = input.nextLine();
+					System.out.println("website");
+					website = input.nextLine();
+				}
+				
+				if (Contact.isValid(phone)) {
+					System.out.println("Valid Number");
+				} else {
+					System.out.println("[No Number]");
 				}
 				
 			} else if (choice.equalsIgnoreCase("list")) {
@@ -47,5 +72,23 @@ public class Main {
 			
 		} while (choice.equalsIgnoreCase("exit"));
 			
+		
+		input.close();
  	}
+	
+	static void add() {
+		
+	}
+	
+	static void delete() {
+		
+	}
+	
+	static void search() {
+		
+	}
+	
+	static void info() {
+		
+	}
 }
