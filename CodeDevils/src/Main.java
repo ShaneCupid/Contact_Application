@@ -65,7 +65,11 @@ public class Main {
 				
 				
 			} else if (choice.equalsIgnoreCase("list")) {
-				System.out.println();
+				
+				for(int i = 0; i<=contacts.size()-1;i++ ) {
+					System.out.println(contacts.get(i).getContactId() + " : " + contacts.get(i).getName());
+					
+				}
 				
 			} else if (choice.equalsIgnoreCase("count")) {
 				System.out.println();
@@ -103,4 +107,7 @@ public class Main {
 	static void info() {
 		
 	}
-}
+	
+		
+	}
+
