@@ -1,12 +1,12 @@
 
 public class Person extends Contact{
 	private String email;
-	private String DOB;
+	private String dob;
 	
 	public Person(String name, String phoneNumber, String email, String dOB) {
 		super(name, phoneNumber);
 		this.email = email;
-		DOB = dOB;
+		dob = dOB;
 	}
 
 	public String getEmail() {
@@ -18,16 +18,16 @@ public class Person extends Contact{
 	}
 
 	public String getDOB() {
-		return DOB;
+		return dob;
 	}
 
 	public void setDOB(String dOB) {
-		DOB = dOB;
+		dob = dOB;
 	}
 
 	@Override
 	public String toString() {
-		return "Person [email = " + email + ", DOB = " + DOB + "]";
+		return "Person [email = " + email + ", DOB = " + dob + "]";
 	}
 
 	
