@@ -1,12 +1,9 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 		HashMap<Integer, Contact> map = new HashMap<>();
-
-		ArrayList<Contact> contacts = new ArrayList<Contact>();
 
 		String displayMenu = "[add, list, count, info, delete, search, exit]";
 		Scanner input = new Scanner(System.in);
@@ -16,9 +13,10 @@ public class Main {
 		String email;
 		String dob;
 		String website;
+		Integer id;
+		Integer num = 0;
 
-
-		do {
+		while (true) {
 			System.out.println(displayMenu);
 			choice = input.nextLine();
 
@@ -43,7 +41,8 @@ public class Main {
 					System.out.println("DOB");
 					dob = input.nextLine();
 
-					contacts.add(new Person(name, phone, email, dob));
+					map.put(num, new Person(name, phone, email, dob));
+					num++;
 
 				} else if (choice.equalsIgnoreCase("organization")) {
 
@@ -60,40 +59,44 @@ public class Main {
 					System.out.println("website");
 					website = input.nextLine();
 
-					contacts.add(new Organization(name, phone, website));
+					map.put(num, new Organization(name, phone, website));
+					num++;
 				}
 
 
 			} else if (choice.equalsIgnoreCase("list")) {
 
-				for(int i = 0; i<=contacts.size()-1;i++ ) {
-					System.out.println(contacts.get(i).getContactId() + " : " + contacts.get(i).getName());
+				for(int i = 0; i<=map.size()-1;i++ ) {
+					System.out.println(map.get(i).getContactId() + " : " + map.get(i).getName());
 
 				}
 
 			} else if (choice.equalsIgnoreCase("count")) {
-				System.out.println(contacts.size());
+				System.out.println(map.size());
 
 
 			} else if (choice.equalsIgnoreCase("info")) {
 
-				for(int i = 0; i<=contacts.size()-1;i++ ) {
-					System.out.println(contacts);
-
+				for(int i = 0; i<=map.size()-1;i++ ) {
+					System.out.println(map);
 				}
-                  System.out.println("please enter Id: ");
-                 int number=input.nextInt();
-                 if(contacts.contains(number)) {
-                	 System.out.println(contacts.get(number));
-                	 
+				
+                 System.out.println("please enter ID: ");
+                 id =input.nextInt();
+                 
+                 if(map.get(id).getContactId() == id) {
+                	 System.out.println(map.get(id)); 
                  }
                  
 
 			} else if (choice.equalsIgnoreCase("delete")) { 
-				System.out.println();
-				System.out.println();
-
-				int id = input.nextInt();	
+				for(int i = 0; i<=map.size()-1;i++ ) {
+					System.out.println(map);
+				}
+				
+				System.out.println("Please enter contact ID: ");
+				id = input.nextInt();
+				
 				if (map.containsKey(id)) {
 					map.remove(id);
 				}
@@ -101,12 +104,15 @@ public class Main {
 			} else if (choice.equalsIgnoreCase("search")) {
 				System.out.println();
 			} 
-
-		} while (choice.equalsIgnoreCase("exit"));
+			if (choice.equalsIgnoreCase("exit")) {
+				break;
+			}
+		} 
 		System.out.println("Thanks for using our PhoneBook");
 
 		input.close();
 	}
+	
 
 	static void delete() {
 
