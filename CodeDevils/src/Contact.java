@@ -8,8 +8,7 @@ public class Contact {
 	protected final int contactId;
 	static int nextId = 1;
 	protected final LocalDateTime createdAt;
-	
-	
+
 	public Contact(String name, String phoneNumber) {
 		super();
 		this.name = name;
