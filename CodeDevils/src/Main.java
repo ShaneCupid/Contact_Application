@@ -1,11 +1,10 @@
 import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		//HashMap<Integer, String> map = new HashMap<>();
+		HashMap<Integer, String> map = new HashMap<>();
 		
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
@@ -38,9 +37,12 @@ public class Main {
 			} else if (choice.equalsIgnoreCase("delete")) { 
 				System.out.println();
 				System.out.println();
-				
+				int id = input.nextInt();	
+					if (map.containsKey(id)) {
+						map.remove(id);
+					}
 			} else if (choice.equalsIgnoreCase("search")) {
-				
+				System.out.println();
 			} 
 			
 		} while (choice.equalsIgnoreCase("exit"));
