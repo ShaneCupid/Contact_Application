@@ -27,8 +27,11 @@ public class Person extends Contact{
 
 	@Override
 	public String toString() {
-		return "Person [email = " + email + ", DOB = " + dob + "]";
+		return "Person [email=" + email + ", dob=" + dob + ", name=" + name + ", phoneNumber=" + phoneNumber
+				+ ", contactId=" + contactId + ", createdAt=" + createdAt + "]";
 	}
+
+	
 
 	
 }
