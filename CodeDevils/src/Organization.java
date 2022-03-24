@@ -17,8 +17,10 @@ public class Organization extends Contact{
 
 	@Override
 	public String toString() {
-		return "Organization [website = " + website + "]";
+		return "Organization [website=" + website + ", name=" + name + ", phoneNumber=" + phoneNumber + ", contactId="
+				+ contactId + ", createdAt=" + createdAt + "]";
 	}
-	
+
+
 	
 }
