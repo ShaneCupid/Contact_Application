@@ -1,6 +1,8 @@
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -8,10 +10,25 @@ import java.util.Scanner;
 
 public class Main {
 	
-	static File file = new File ("C:\\Users\\JonRodriguez-Castill\\OneDrive - Xpanxion\\Desktop\\GitHub\\CodeDevils\\Contacts.txt");
+	//static File file = new File ("C:\\Users\\JonRodriguez-Castill\\OneDrive - Xpanxion\\Desktop\\GitHub\\CodeDevils\\Contacts.txt");
+	static File file = new File ("C:\\Users\\ShaneCupid\\OneDrive - Xpanxion\\Documents\\GitHub\\CodeDevils\\Contacts.txt");
+
 	static HashMap<Integer, Contact> map = new HashMap<>();
 
 	public static void main(String[] args) {
+		
+	
+		try {
+			FileInputStream we = new FileInputStream(file);
+			ObjectInputStream ew = new ObjectInputStream(we);
+			Contact person = (Contact) ew.readObject();
+			Contact organization = (Contact) ew.readObject();
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 
 		// Iterator<Map.Entry<Integer, Contact>> it = map.entrySet().iterator();
 
