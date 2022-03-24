@@ -1,12 +1,15 @@
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.regex.*;
 
-public class Contact {
+public class Contact implements Serializable {
+	
 	protected String name;
 	protected String phoneNumber;
 	protected final int contactId;
 	static int nextId = 1;
+	protected final LocalDateTime createdAt;
 
 	public String getName() {
 		return name;
@@ -32,8 +35,7 @@ public class Contact {
 		return createdAt;
 	}
 
-	protected final LocalDateTime createdAt;
-
+	
 	public Contact(String name, String phoneNumber) {
 		super();
 		this.name = name;

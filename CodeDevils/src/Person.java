@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Person extends Contact{
+public class Person extends Contact implements Serializable{
 	private String email;
 	private String dob;
 	

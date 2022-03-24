@@ -10,26 +10,14 @@ import java.util.Scanner;
 
 public class Main {
 	
-	//static File file = new File ("C:\\Users\\JonRodriguez-Castill\\OneDrive - Xpanxion\\Desktop\\GitHub\\CodeDevils\\Contacts.txt");
-	static File file = new File ("C:\\Users\\ShaneCupid\\OneDrive - Xpanxion\\Documents\\GitHub\\CodeDevils\\Contacts.txt");
+	
+	//static File file = new File ("C:\\Users\\ShaneCupid\\OneDrive - Xpanxion\\Documents\\GitHub\\CodeDevils\\Contacts.txt");
 
 	static HashMap<Integer, Contact> map = new HashMap<>();
 
 	public static void main(String[] args) {
 		
-	
-		try {
-			FileInputStream we = new FileInputStream(file);
-			ObjectInputStream ew = new ObjectInputStream(we);
-			Contact person = (Contact) ew.readObject();
-			Contact organization = (Contact) ew.readObject();
-		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-
+		
 		// Iterator<Map.Entry<Integer, Contact>> it = map.entrySet().iterator();
 
 		String displayMenu = "[add, list, count, info, delete, search, exit]";
@@ -43,11 +31,38 @@ public class Main {
 		String dob;
 		String website;
 		Integer id;
-		Integer num = 1;
 		Contact newContact;
 		
+		File file = new File ("C:\\Users\\JonRodriguez-Castill\\OneDrive - Xpanxion\\Desktop\\GitHub\\CodeDevils\\Contacts.txt");
 		
+		try {
+			FileInputStream we = new FileInputStream(file);
+			ObjectInputStream ew = new ObjectInputStream(we);
+			
+			Contact person = (Contact) ew.readObject(); 
+			
+			while(person!=null) {
+				
+				
+				map.put(person.getContactId(), person);
+				
+				person = (Contact) ew.readObject();
+				
+			}
+			
+			ew.close();
+			
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 
+		
+		
+		
+		System.out.println(map);
 		while (true) {
 
 			System.out.println(displayMenu);
@@ -76,7 +91,7 @@ public class Main {
 
 					newContact = new Person(name, phone, email, dob);
 					map.put(newContact.getContactId(), newContact);
-					num++;
+					
 
 				}
 
@@ -97,7 +112,7 @@ public class Main {
 
 					newContact = new Organization(name, phone, website);
 					map.put(newContact.getContactId(), newContact);
-					num++;
+					
 				}
 
 			}
@@ -217,12 +232,13 @@ public class Main {
 			os.writeObject(eachContactMapping.getValue());
 		}
 		
+		System.out.println(map);
 		os.close();
 		
 		}
 		
 		catch(IOException e) {
-			System.out.println(e.getStackTrace());
+			System.out.println(e);
 		}
 		
 		input.close();

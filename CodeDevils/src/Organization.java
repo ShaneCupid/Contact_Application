@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Organization extends Contact{
+public class Organization extends Contact implements Serializable{
 	private String website;
 
 	public Organization(String name, String phoneNumber, String website) {
